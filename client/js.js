@@ -61,6 +61,7 @@ returnHome = function(){
 };
 
 testComplete = function(){
+    $('#finishTest').css('display', 'block')
     $('.testComplete')
         .css('display', 'block')
         .append('<p>YOU HAVE ' + correct + ' CORRECT</p>');

@@ -1,0 +1,31 @@
+<head>
+    <title>CDLPracticeTests</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script language="JavaScript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+
+
+</head>
+
+<template name="main">
+    <body>
+        <div class="container">
+
+            {{> home}}
+        </div>
+    </body>
+</template>
+
+<template name='home'>
+    <div class="container-fluid">
+        <h3>CDL PRACTICE TEST</h3>
+        <ul class="list-group" id='selectTest'>
+            <li class="list-group-item" id='genKnow'><a href="/genKnow">GENERAL KNOWLEDGE</a></li>
+            <li class="list-group-item" id='airBrakes'><a href="/airBrakes">AIR BRAKES</a></li>
+        </ul>
+    </div>
+
+
+      <!--   <div class="container">
+            {{> yield}}
+        </div> -->
+</template>

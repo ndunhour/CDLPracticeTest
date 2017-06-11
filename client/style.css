@@ -1,0 +1,106 @@
+body{
+    font-family: Tahoma, Geneva, sans-serif;
+    background-color: #004db8;
+}
+.tempHeader{
+    background-color: #7db3ff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.question{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.choices{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.answer{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.quesProgress{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.save{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.movementButts{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.movementButts p{
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #00226b;
+    border-radius: 25px;
+    padding: 5px 0;
+    box-shadow: 5px 5px #888888;
+}
+.movementButts p:hover{
+    background-color: white;
+    cursor: pointer;
+}
+.movementButts p:active{
+    transform: translateY(4px);
+    box-shadow: 2px 2px #888888;
+
+}
+.testComplete{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: none;
+}
+#testQuestions{
+    display: none;
+}
+#savedQuestions{
+    background-color: #7db3ff;
+    border-bottom: 1px solid #00226b;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+#startTest{
+    margin-bottom: 10px;
+}
+#startTest p{
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #00226b;
+    border-radius: 25px;
+    padding: 5px 0;
+    box-shadow: 5px 5px #888888;
+}
+#startTest p:hover{
+    background-color: white;
+    cursor: pointer;
+}
+#startTest p:active{
+    transform: translateY(4px);
+    box-shadow: 2px 2px #888888;
+
+}
+li:hover{
+    background-color: white;
+}

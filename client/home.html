@@ -8,7 +8,7 @@
 
 <template name="main">
     <body>
-        <div class="container">
+        <div class="container main">
 
             {{> home}}
         </div>
@@ -17,11 +17,13 @@
 
 <template name='home'>
     <div class="container-fluid">
-        <h3>CDL PRACTICE TEST</h3>
-        <ul class="list-group" id='selectTest'>
-            <li class="list-group-item" id='genKnow'><a href="/genKnow">GENERAL KNOWLEDGE</a></li>
-            <li class="list-group-item" id='airBrakes'><a href="/airBrakes">AIR BRAKES</a></li>
-        </ul>
+        <div class="titlePage">
+            <h3>CDL PRACTICE TEST</h3>
+            <ul class="list-group" id='selectTest'>
+                <a href="/genKnow"><li class="list-group-item" id='genKnow'>GENERAL KNOWLEDGE</li></a>
+                <a href="/airBrakes"><li class="list-group-item" id='airBrakes'>AIR BRAKES</li></a>
+            </ul>
+        </div>
     </div>
 
 

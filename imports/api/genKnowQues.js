@@ -4,6 +4,8 @@ import { check } from 'meteor/check';
 
 export const GenKnow = new Mongo.Collection('genKnow');
 
+import '/Users/ndunhourowens/Coding_Projects/CDLPracticeTests/private/gk.js';
+
 if (Meteor.isServer) {
   // This code only runs on the server
     // if (GenKnow.find().count() === 0){
@@ -21,9 +23,9 @@ if (Meteor.isServer) {
     //         "c": ["Cat", "Dog", "Horse", "Fish"]},
 
     //     ];
-    //     for(i=0; i<insertGenKnow.length; i++){
-    //         GenKnow.insert(insertGenKnow[i]);
-    //     }
+        for(i=0; i<gk.length; i++){
+            GenKnow.insert(gk[i]);
+        }
     // }
     Meteor.publish('genKnow', function() {
         return GenKnow.find({});

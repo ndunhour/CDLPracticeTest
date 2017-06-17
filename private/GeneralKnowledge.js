@@ -1,44 +1,44 @@
- var generalKnowledge =    [
-        {
-            'q': 'When the roads are slippery you should:',
-            'c': [    'a.  drive alongside other vehicles',
-                    'b.  make turns as gentle as possible',
-                    'c.   stop and test the traction while going up hills',
-                    'd.  decrease the distance that you look ahead of your vehicle ']
-        },
+ // var generalKnowledge =    [
+ //        {
+ //            'q': 'When the roads are slippery you should:',
+ //            'c': [    'a.  drive alongside other vehicles',
+ //                    'b.  make turns as gentle as possible',
+ //                    'c.   stop and test the traction while going up hills',
+ //                    'd.  decrease the distance that you look ahead of your vehicle ']
+ //        },
 
-    {
-            'q': 'Which of these statements about brakes is true?',
-            'c': [    'a.  The heavier a vehicle or the faster it is moving the more heat the brakes have to absorb to stop it',
-                    'b.  Brakes have more stopping power when they get very hot',
-                    'c.  Brake drums cool very quickly when the vehicle is moving very fast',
-                    'd.  All of the above are true']
-        },
+ //    {
+ //            'q': 'Which of these statements about brakes is true?',
+ //            'c': [    'a.  The heavier a vehicle or the faster it is moving the more heat the brakes have to absorb to stop it',
+ //                    'b.  Brakes have more stopping power when they get very hot',
+ //                    'c.  Brake drums cool very quickly when the vehicle is moving very fast',
+ //                    'd.  All of the above are true']
+ //        },
 
-    {
-            'q': 'Truck escape ramps',
-            'c': [    'a.  help avoid damage to vehicles',
-                    'b.  should not be used if brakes fail on a downgrade',
-                    'c.  cannot be used by certain types of heat vehicles',
-                    'd.  All of the above']
-        },
+ //    {
+ //            'q': 'Truck escape ramps',
+ //            'c': [    'a.  help avoid damage to vehicles',
+ //                    'b.  should not be used if brakes fail on a downgrade',
+ //                    'c.  cannot be used by certain types of heat vehicles',
+ //                    'd.  All of the above']
+ //        },
 
-    {
-            'q': 'You are starting your vehicle in motion from a stop.  As you apply power to the drive wheels, they start to spin.  You should:',
-            'c': [    'a.  take your foot off the accelerator',
-                    'b.  take your foot off the accelerator and apply the brakes',
-                    'c.  press harder on the accelerator',
-                    'd.  try a lower gear']
-        },
+ //    {
+ //            'q': 'You are starting your vehicle in motion from a stop.  As you apply power to the drive wheels, they start to spin.  You should:',
+ //            'c': [    'a.  take your foot off the accelerator',
+ //                    'b.  take your foot off the accelerator and apply the brakes',
+ //                    'c.  press harder on the accelerator',
+ //                    'd.  try a lower gear']
+ //        },
 
-    {
-            'q': 'The distance that you should look ahead of your vehicle while driving amounts to about _____ mile at highway speed.',
-            'c': [    'a.  1/10',
-                    'b.  1/8',
-                    'c.  1/4',
-                    'd.  1/2']
-        },
-    ]
+ //    {
+ //            'q': 'The distance that you should look ahead of your vehicle while driving amounts to about _____ mile at highway speed.',
+ //            'c': [    'a.  1/10',
+ //                    'b.  1/8',
+ //                    'c.  1/4',
+ //                    'd.  1/2']
+ //        },
+ //    ]
 
 //     {
 //             'q': 'The Driver’s Manual suggests several things to do when you pass a vehicle.  Which of these is not one of them?',

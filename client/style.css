@@ -1,6 +1,7 @@
 body{
     font-family: Tahoma, Geneva, sans-serif;
     background-color: #004db8;
+    font-size: xx-large !important;
 }
 .titlePage{
     text-align: center;
@@ -83,7 +84,7 @@ body{
     display: none;
 }
 #testQuestions{
-    display: none;
+    /*display: none;*/
 }
 #savedQuestions{
     background-color: #7db3ff;
@@ -149,6 +150,13 @@ ul#selectTest.list-group a:hover{
     text-decoration: none;
 }
 
+li{
+    padding-bottom: 50px;
+}
 li:hover{
     background-color: white;
+}
+ul{
+    list-style-type: none;
+
 }

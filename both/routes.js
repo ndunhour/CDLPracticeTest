@@ -8,7 +8,7 @@ Router.route('/genKnow',{
     name: 'genKnow',
     waitOn: function(){
         return [
-            Meteor.subscribe('genKnow'),
+            Meteor.subscribe('GenKnow'),
         ];
     }
 

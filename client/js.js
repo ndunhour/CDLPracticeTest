@@ -7,20 +7,27 @@ var save = [];
 var correct = 0;
 
 displayQuestion = function(){
-$('#testQuestions').css('display', 'block');
 $('#startTest').css('display', 'none');
+$('#testQuestions').css('display', 'block');
 
     const genKnowQuestions = GenKnow.find().fetch();
 
             if(count < genKnowQuestions.length){
                 $('#questions').text(genKnowQuestions[count].q);
                 $('#quesNum').text("QUESTION " + (count+1));
+                $('#choices').css('display', 'block');
+                $('#c0').text(genKnowQuestions[count].c[0]);
+                $('#c1').text(genKnowQuestions[count].c[1]);
+                $('#c2').text(genKnowQuestions[count].c[2]);
+                $('#c3').text(genKnowQuestions[count].c[3]);
 
-                shuffleChoices(genKnowQuestions[count].c);
-                $('#c0').text(shuffleChoices(genKnowQuestions[count].c[0]));
-                $('#c1').text(shuffleChoices(genKnowQuestions[count].c[1]));
-                $('#c2').text(shuffleChoices(genKnowQuestions[count].c[2]));
-                $('#c3').text(shuffleChoices(genKnowQuestions[count].c[3]));
+                // shuffleChoices(genKnowQuestions[count].c);
+                // $('#c0').text(shuffleChoices(genKnowQuestions[count].c[0]));
+                // $('#c1').text(shuffleChoices(genKnowQuestions[count].c[1]));
+                // $('#c2').text(shuffleChoices(genKnowQuestions[count].c[2]));
+                // $('#c3').text(shuffleChoices(genKnowQuestions[count].c[3]));
+
+
 
             $("#progress")
                 .text((count+1) + " of " + genKnowQuestions.length);
@@ -30,10 +37,10 @@ $('#startTest').css('display', 'none');
         }
 };
 
-shuffleChoices= function(array) {
-        for(var j, x, i = array.length; i; j = parseInt(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
-        return array;
-};
+// shuffleChoices= function(array) {
+//         for(var j, x, i = array.length; i; j = parseInt(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+//         return array;
+// };
 
 back = function(){
     if(count !== 0){
@@ -61,7 +68,7 @@ returnHome = function(){
 };
 
 testComplete = function(){
-    $('#finishTest').css('display', 'block')
+    $('#finishTest').css('display', 'block');
     $('.testComplete')
         .css('display', 'block')
         .append('<p>YOU HAVE ' + correct + ' CORRECT</p>');
@@ -90,28 +97,27 @@ checkAnswers = function(){
 
 saveQuestion = function(){
 
-    // save.push(count);
-    // $("#saveAlert")
-    //     .text("Question Saved")
-    //     .fadeIn(400)
-    //     .css("display", "block")
-    //     .fadeOut(1500);
-    // next();
+    save.push(count);
+    $("#saveAlert")
+        .text("Question Saved")
+        .fadeIn(400)
+        .css("display", "block")
+        .fadeOut(1500);
+    next();
 };
 
 selectSaveQuestion = function(){
     var selSavQues = parseInt(event.target.id);
-    console.log('click', selSavQues)
     var savedQuesNum = selSavQues + 1;
     count = savedQuesNum;
         document.getElementById("questions").innerHTML = testQues[count].q;
         document.getElementById("quesNum").innerHTML = "Saved QUESTION " + savedQuesNum ;
 
-        shuffleChoices(testQues[count].c);
-        document.getElementById("c0").innerHTML = shuffleChoices(testQues[count].c[0]);
-        document.getElementById("c1").innerHTML = shuffleChoices(testQues[count].c[1]);
-        document.getElementById("c2").innerHTML = shuffleChoices(testQues[count].c[2]);
-        document.getElementById("c3").innerHTML = shuffleChoices(testQues[count].c[3]);
+        // shuffleChoices(testQues[count].c);
+        document.getElementById("c0").innerHTML = (testQues[count].c[0]);
+        document.getElementById("c1").innerHTML = (testQues[count].c[1]);
+        document.getElementById("c2").innerHTML = (testQues[count].c[2]);
+        document.getElementById("c3").innerHTML = (testQues[count].c[3]);
 
 };
 

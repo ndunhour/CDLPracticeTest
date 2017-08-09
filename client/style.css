@@ -56,6 +56,7 @@ body{
     border-bottom: 1px solid #00226b;
     padding: 10px;
     margin-bottom: 10px;
+    display: none;
 }
 .movementButts p{
     background-color: white;

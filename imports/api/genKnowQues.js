@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const GenKnow = new Mongo.Collection('GenKnow');
+export const GenKnow = new Mongo.Collection('genKnow');
 
 if (Meteor.isServer) {
 

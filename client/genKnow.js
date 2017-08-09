@@ -15,9 +15,11 @@ Template.blank.rendered = function(){
 };
 
 Template.genKnow.helpers({
-
 });
 
 Template.genKnow.events({
+    'click #startTest': function(e,t){
+        $('.movementButts').css('display', 'block');
+    },
 
 });

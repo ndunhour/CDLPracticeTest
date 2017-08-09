@@ -5,42 +5,45 @@ import { GenKnow } from '../imports/api/genKnowQues.js';
 var count = 0;
 var save = [];
 var correct = 0;
+var questions = [];
+var correctAnswer;
 
 displayQuestion = function(){
 $('#startTest').css('display', 'none');
 $('#testQuestions').css('display', 'block');
 
     const genKnowQuestions = GenKnow.find().fetch();
+    var ranQues = getRandom();
+    questions.push(ranQues)
+    console.log('ranQues', ranQues)
+            // set the number of questions
+            if(count < 5){
 
-            if(count < genKnowQuestions.length){
-                $('#questions').text(genKnowQuestions[count].q);
+                $('#questions').text(genKnowQuestions[ranQues].q);
                 $('#quesNum').text("QUESTION " + (count+1));
                 $('#choices').css('display', 'block');
-                $('#c0').text(genKnowQuestions[count].c[0]);
-                $('#c1').text(genKnowQuestions[count].c[1]);
-                $('#c2').text(genKnowQuestions[count].c[2]);
-                $('#c3').text(genKnowQuestions[count].c[3]);
+                $('#c0').text(genKnowQuestions[ranQues].c[0]);
+                $('#c1').text(genKnowQuestions[ranQues].c[1]);
+                $('#c2').text(genKnowQuestions[ranQues].c[2]);
+                $('#c3').text(genKnowQuestions[ranQues].c[3]);
 
-                // shuffleChoices(genKnowQuestions[count].c);
-                // $('#c0').text(shuffleChoices(genKnowQuestions[count].c[0]));
-                // $('#c1').text(shuffleChoices(genKnowQuestions[count].c[1]));
-                // $('#c2').text(shuffleChoices(genKnowQuestions[count].c[2]));
-                // $('#c3').text(shuffleChoices(genKnowQuestions[count].c[3]));
+                $('#a').text(genKnowQuestions[ranQues].a);
 
-
-
+                console.log('displayAnswer', genKnowQuestions[ranQues].a)
+                correctAnswer = genKnowQuestions[ranQues].a
             $("#progress")
-                .text((count+1) + " of " + genKnowQuestions.length);
+                .text((count+1) + " of " + 5);
 
         }else{
             testComplete();
         }
 };
 
-// shuffleChoices= function(array) {
-//         for(var j, x, i = array.length; i; j = parseInt(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
-//         return array;
-// };
+getRandom = function() {
+    const ranNum = (Math.floor(Math.random() * GenKnow.find().count()));
+    return ranNum;
+
+};
 
 back = function(){
     if(count !== 0){
@@ -73,6 +76,7 @@ testComplete = function(){
         .css('display', 'block')
         .append('<p>YOU HAVE ' + correct + ' CORRECT</p>');
     $('#testQuestions').css('display', 'none');
+    console.log('quesNumbers', questions)
 };
 
 finishTest = function(){
@@ -84,10 +88,11 @@ finishTest = function(){
 
 checkAnswers = function(){
     if(count < GenKnow.find().fetch().length){
-        var answer = GenKnow.find().fetch()[count].a;
-        var selectedAnswer = event.target.textContent;
-        if(answer === selectedAnswer){
+        var selectedAnswer = event.target.textContent.slice(0,1);
+
+        if(correctAnswer === selectedAnswer){
             correct = correct + 1;
+            console.log('correct')
         }
         next();
     }else{

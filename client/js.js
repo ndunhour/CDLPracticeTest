@@ -7,17 +7,20 @@ var save = [];
 var correct = 0;
 var questions = [];
 var correctAnswer;
+var numOfQues;
 
 displayQuestion = function(){
 $('#startTest').css('display', 'none');
 $('#testQuestions').css('display', 'block');
+numOfQues = ($('#numOfQues').val());
+$('#numOfQues').css('display', 'none');
 
     const genKnowQuestions = GenKnow.find().fetch();
     var ranQues = getRandom();
     questions.push(ranQues)
     console.log('ranQues', ranQues)
             // set the number of questions
-            if(count < 5){
+            if(count < numOfQues){
 
                 $('#questions').text(genKnowQuestions[ranQues].q);
                 $('#quesNum').text("QUESTION " + (count+1));
@@ -32,7 +35,7 @@ $('#testQuestions').css('display', 'block');
                 console.log('displayAnswer', genKnowQuestions[ranQues].a)
                 correctAnswer = genKnowQuestions[ranQues].a
             $("#progress")
-                .text((count+1) + " of " + 5);
+                .text((count+1) + " of " + numOfQues);
 
         }else{
             testComplete();

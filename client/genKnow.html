@@ -1,8 +1,18 @@
 <template name="genKnow">
     {{> nav}}
-    <div class="container-fluid">
-        <div id="startTest"><p onclick="displayQuestion()">START</p></div>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <input type="text"  id="numOfQues" placeholder="Enter number of questions for test">
+            </div>
+        </div>
+        <div id="startTest">
+            <p onclick="displayQuestion()">START</p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
         <div id="testQuestions">
             <div class="question" id="question">
                 <h3 id="quesNum">QUESTION</h3>

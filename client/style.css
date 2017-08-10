@@ -84,8 +84,31 @@ body{
     margin-bottom: 10px;
     display: none;
 }
+
 #testQuestions{
-    /*display: none;*/
+    display: none;
+}
+input#numOfQues{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+#numOfQuesButt {
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #00226b;
+    border-radius: 25px;
+    padding: 5px 0;
+    box-shadow: 5px 5px #888888;
+}
+#numOfQuesButt p:hover{
+    background-color: #c7ddf5;
+    cursor: pointer;
+}
+#numOfQuesButt p:active{
+    transform: translateY(4px);
+    box-shadow: 2px 2px #888888;
+
 }
 #savedQuestions{
     background-color: #7db3ff;

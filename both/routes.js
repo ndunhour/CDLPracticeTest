@@ -4,7 +4,7 @@ Router.route('/', {
 
 
 });
-Router.route('/genKnow',{
+Router.route('/genKnow', {
     name: 'genKnow',
     waitOn: function(){
         return [
@@ -13,11 +13,14 @@ Router.route('/genKnow',{
     }
 
 });
-Router.route('/airBrakes',{
+Router.route('/airBrakes', {
     name: 'airBrakes',
     waitOn: function(){
         return [
             Meteor.subscribe('airBrakes'),
         ];
     }
+});
+Router.route('/reviewTest', {
+    name: 'reviewTest'
 });

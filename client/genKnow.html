@@ -26,7 +26,6 @@
                     <li id="c1" onclick="checkAnswers()"></li>
                     <li id="c2" onclick="checkAnswers()"></li>
                     <li id="c3" onclick="checkAnswers()"></li>
-                    <li id="a"></li>
 
                 </ul>
             </div>
@@ -38,27 +37,20 @@
 
             <div class="container-fluid">
                 <div class="row movementButts">
-                    <div class="col-xs-6"><p id="back" onclick="back()">BACK
-                    </p></div>
-
-                    <div class="col-xs-6"><p id="skip" onclick="next()">SKIP
-                    </p></div>
+                    <div class="col-xs-6"><p id="skip" onclick="next()">SKIP</p></div>
                 </div>
             </div>
         </div>
 
-<!--         <div class="save">
-            <h3 id="saveQues">Save Question</h3>
-            <p id="saveAlert"></p>
-            <h3 id="viewSaved">View Save Questions</h3>
-            <h3 id="hideSaved">Hide List</h3>
-            <div id="savedList"></div>
-        </div> -->
-
         <div class="testComplete">
             <h3>TEST COMPLETE</h3>
+            <button id="displayReviewQues" onclick="displayReviewQues()">Review Test</button>
         </div>
-        <div id="finishTest"><p onclick="finishTest()">EXIT</p></div>
 
+        <!-- <div id="finishTest"><p onclick="finishTest()">EXIT</p></div> -->
+
+        <div class="showSavedQues">
+            <ol></ol>
+        </div>
     </div>
 </template>

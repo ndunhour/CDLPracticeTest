@@ -6,6 +6,7 @@ var count = 0;
 var save = [];
 var correct = 0;
 var questions = [];
+var quesText = [];
 var correctAnswer;
 var numOfQues;
 
@@ -17,8 +18,6 @@ $('#numOfQues').css('display', 'none');
 
     const genKnowQuestions = GenKnow.find().fetch();
     var ranQues = getRandom();
-    questions.push(ranQues)
-    console.log('ranQues', ranQues)
             // set the number of questions
             if(count < numOfQues){
 
@@ -30,10 +29,13 @@ $('#numOfQues').css('display', 'none');
                 $('#c2').text(genKnowQuestions[ranQues].c[2]);
                 $('#c3').text(genKnowQuestions[ranQues].c[3]);
 
-                $('#a').text(genKnowQuestions[ranQues].a);
-
-                console.log('displayAnswer', genKnowQuestions[ranQues].a)
+                // sets var to test actual asnswer and user answer
                 correctAnswer = genKnowQuestions[ranQues].a
+
+                // saves question in text form to search db to recall on "reviewTest" function
+                var questionsInText = genKnowQuestions[ranQues].q;
+                quesText.push(questionsInText);
+
             $("#progress")
                 .text((count+1) + " of " + numOfQues);
 
@@ -43,23 +45,22 @@ $('#numOfQues').css('display', 'none');
 };
 
 getRandom = function() {
+    // create a random question from the database
     const ranNum = (Math.floor(Math.random() * GenKnow.find().count()));
     return ranNum;
 
 };
 
-back = function(){
-    if(count !== 0){
-        count = count - 1;
-        displayQuestion();
-    }
-
-};
-
 next = function(){
+    // skips to next question
     count = count + 1;
     displayQuestion();
 
+};
+
+returnHome = function(){
+    count = 0;
+    save = [];
 };
 
 skip = function(){
@@ -68,10 +69,6 @@ skip = function(){
     displayQuestion();
 };
 
-returnHome = function(){
-    count = 0;
-    save = [];
-};
 
 testComplete = function(){
     $('#finishTest').css('display', 'block');
@@ -79,23 +76,29 @@ testComplete = function(){
         .css('display', 'block')
         .append('<p>YOU HAVE ' + correct + ' CORRECT</p>');
     $('#testQuestions').css('display', 'none');
-    console.log('quesNumbers', questions)
 };
 
-finishTest = function(){
-    count = 0;
-    save = [];
-    correct = 0;
-    Router.go('/');
+displayReviewQues = function(){
+    $('.showSavedQues').css('display', 'block');
+    $('.testComplete').css('display', 'none');
+
+    // displays the question number and the user's choice
+    for (var i = 0; i < quesText.length; i++) {
+        $("ol").append('<li id="' + [i]+ '" onclick="revTest()">' + save[i] + '</li>');
+    }
+};
+
+revTest = function(){
+
 };
 
 checkAnswers = function(){
     if(count < GenKnow.find().fetch().length){
         var selectedAnswer = event.target.textContent.slice(0,1);
-
+        // save the user's answer
+        save.push(selectedAnswer);
         if(correctAnswer === selectedAnswer){
             correct = correct + 1;
-            console.log('correct')
         }
         next();
     }else{
@@ -103,34 +106,10 @@ checkAnswers = function(){
     }
 };
 
-saveQuestion = function(){
-
-    save.push(count);
-    $("#saveAlert")
-        .text("Question Saved")
-        .fadeIn(400)
-        .css("display", "block")
-        .fadeOut(1500);
-    next();
-};
-
-selectSaveQuestion = function(){
-    var selSavQues = parseInt(event.target.id);
-    var savedQuesNum = selSavQues + 1;
-    count = savedQuesNum;
-        document.getElementById("questions").innerHTML = testQues[count].q;
-        document.getElementById("quesNum").innerHTML = "Saved QUESTION " + savedQuesNum ;
-
-        // shuffleChoices(testQues[count].c);
-        document.getElementById("c0").innerHTML = (testQues[count].c[0]);
-        document.getElementById("c1").innerHTML = (testQues[count].c[1]);
-        document.getElementById("c2").innerHTML = (testQues[count].c[2]);
-        document.getElementById("c3").innerHTML = (testQues[count].c[3]);
-
-};
-
-hideSavedQuestion = function(){
-    $("#viewSaved").css("display", "block");
-    $("#hideSaved").css("display", "none");
-    $("#savedList").css("display", "none").empty();
+finishTest = function(){
+    count = 0;
+    correct = 0;
+    save = [];
+    quesions = [];
+    Router.go('/');
 };

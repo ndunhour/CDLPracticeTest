@@ -5,7 +5,6 @@ import { GenKnow } from '../imports/api/genKnowQues.js';
 var count = 0;
 var save = [];
 var correct = 0;
-var questions = [];
 var quesText = [];
 var correctAnswer;
 var numOfQues;
@@ -78,17 +77,22 @@ testComplete = function(){
     $('#testQuestions').css('display', 'none');
 };
 
+// button#displayReviewQuestion
 displayReviewQues = function(){
     $('.showSavedQues').css('display', 'block');
     $('.testComplete').css('display', 'none');
 
     // displays the question number and the user's choice
     for (var i = 0; i < quesText.length; i++) {
-        $("ol").append('<li id="' + [i]+ '" onclick="revTest()">' + save[i] + '</li>');
+        $("table").append('<tr id="' + [i] + '" onclick="revTest()"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
     }
 };
 
+// onclick event on li
 revTest = function(){
+    var quesNumRev = event.target.id;
+    console.log('text', quesText)
+    console.log('num', quesText[quesNumRev])
 
 };
 

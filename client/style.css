@@ -20,7 +20,6 @@ td{
     height: 100%;
     width: 100%;
 }
-
 .tempHeader{
     background-color: #7db3ff;
     padding: 10px;
@@ -93,10 +92,9 @@ td{
     margin-bottom: 10px;
     display: none;
 }
-.showSaveQues{
+.showSavedQues{
     display: none;
 }
-
 #testQuestions{
     display: none;
 }
@@ -190,7 +188,7 @@ li{
     padding-bottom: 50px;
 }
 li:hover{
-    background-color: white;
+    background-color: gray;
 }
 ul{
     list-style-type: none;

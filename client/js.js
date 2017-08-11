@@ -2,11 +2,17 @@
 // import { ReactiveVar } from 'meteor/reactive-var';
 import { GenKnow } from '../imports/api/genKnowQues.js';
 
+// progress of question
 var count = 0;
+// user's answer
 var save = [];
+// tallies the number of user's correct answers
 var correct = 0;
+// stores random questions in text form
 var quesText = [];
-var correctAnswer;
+// answer of the question
+var actualAnswer;
+// user determines the number of questions
 var numOfQues;
 
 displayQuestion = function(){
@@ -29,7 +35,7 @@ $('#numOfQues').css('display', 'none');
                 $('#c3').text(genKnowQuestions[ranQues].c[3]);
 
                 // sets var to test actual asnswer and user answer
-                correctAnswer = genKnowQuestions[ranQues].a
+                actualAnswer = genKnowQuestions[ranQues].a
 
                 // saves question in text form to search db to recall on "reviewTest" function
                 var questionsInText = genKnowQuestions[ranQues].q;
@@ -39,7 +45,7 @@ $('#numOfQues').css('display', 'none');
                 .text((count+1) + " of " + numOfQues);
 
         }else{
-            testComplete();
+            displayReviewQues();
         }
 };
 
@@ -50,6 +56,64 @@ getRandom = function() {
 
 };
 
+
+// button#displayReviewQuestion
+displayReviewQues = function(){
+    $('.showSavedQues').css('display', 'block');
+    $('#testQuestions').css('display', 'none');
+
+    // displays the question number and the user's choice
+    for (var i = 0; i < quesText.length; i++) {
+        $("table").append('<tr id="' + [i] + '" onclick="revTest()"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
+    }
+    console.log('save', save)
+};
+
+// onclick event on li displays full answer and questions
+revTest = function(){
+    var quesNumRev = event.target.id;
+
+
+
+};
+
+// resets all var and clears out arrays
+exitTest = function(){
+    count = 0;
+    save = [];
+    correct = 0;
+    quesText = [];
+    actualAnswer;
+    numOfQues;
+    Router.go('/');
+};
+
+checkAnswers = function(){
+    var selectedAnswer = event.target.textContent.slice(0,1);
+    // save the user's answer
+    save.push(selectedAnswer);
+    // compares user's answer and actual answer
+    if(actualAnswer === selectedAnswer){
+        correct = correct + 1;
+    }
+    next();
+
+};
+
+submitTest = function(){
+    $('.showSavedQues').css('display', 'none');
+    $('.testComplete')
+        .css('display', 'block')
+    $('p').append('YOU HAVE ' + correct + ' CORRECT');
+
+};
+
+skip = function(){
+    console.log(event)
+
+    // count = count + 1;
+};
+// ---------------------------- //
 next = function(){
     // skips to next question
     count = count + 1;
@@ -60,60 +124,4 @@ next = function(){
 returnHome = function(){
     count = 0;
     save = [];
-};
-
-skip = function(){
-    saveQuestion();
-    count = count + 1;
-    displayQuestion();
-};
-
-
-testComplete = function(){
-    $('#finishTest').css('display', 'block');
-    $('.testComplete')
-        .css('display', 'block')
-        .append('<p>YOU HAVE ' + correct + ' CORRECT</p>');
-    $('#testQuestions').css('display', 'none');
-};
-
-// button#displayReviewQuestion
-displayReviewQues = function(){
-    $('.showSavedQues').css('display', 'block');
-    $('.testComplete').css('display', 'none');
-
-    // displays the question number and the user's choice
-    for (var i = 0; i < quesText.length; i++) {
-        $("table").append('<tr id="' + [i] + '" onclick="revTest()"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
-    }
-};
-
-// onclick event on li
-revTest = function(){
-    var quesNumRev = event.target.id;
-    console.log('text', quesText)
-    console.log('num', quesText[quesNumRev])
-
-};
-
-checkAnswers = function(){
-    if(count < GenKnow.find().fetch().length){
-        var selectedAnswer = event.target.textContent.slice(0,1);
-        // save the user's answer
-        save.push(selectedAnswer);
-        if(correctAnswer === selectedAnswer){
-            correct = correct + 1;
-        }
-        next();
-    }else{
-        testComplete();
-    }
-};
-
-finishTest = function(){
-    count = 0;
-    correct = 0;
-    save = [];
-    quesions = [];
-    Router.go('/');
 };

@@ -37,23 +37,23 @@
 
             <div class="container-fluid">
                 <div class="row movementButts">
-                    <div class="col-xs-6"><p id="skip" onclick="next()">SKIP</p></div>
+                    <div class="col-xs-6"><p id="skip" onclick="skip+()">SKIP</p></div>
                 </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="showSavedQues">
+                <div><table></table></div>
+                <div><button id="submitTest" onclick="submitTest()">Submit Test</button></div>
             </div>
         </div>
 
         <div class="testComplete">
             <h3>TEST COMPLETE</h3>
-            <button id="displayReviewQues" onclick="displayReviewQues()">Review Test</button>
+            <p></p>
+            <button id="submitTest" onclick="exitTest()">Exit</button>
         </div>
 
-        <!-- <div id="finishTest"><p onclick="finishTest()">EXIT</p></div> -->
-
-        <div class="showSavedQues">
-            <ol></ol>
-        </div>
-        <table>
-
-        </table>
     </div>
 </template>

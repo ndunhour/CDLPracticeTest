@@ -14,6 +14,8 @@ var quesText = [];
 var actualAnswer;
 // user determines the number of questions
 var numOfQues;
+// stores skipped Questions
+var skipped = [];
 
 displayQuestion = function(){
 $('#startTest').css('display', 'none');
@@ -26,8 +28,8 @@ $('#numOfQues').css('display', 'none');
             // set the number of questions
             if(count < numOfQues){
 
-                $('#questions').text(genKnowQuestions[ranQues].q);
                 $('#quesNum').text("QUESTION " + (count+1));
+                $('#questions').text(genKnowQuestions[ranQues].q);
                 $('#choices').css('display', 'block');
                 $('#c0').text(genKnowQuestions[ranQues].c[0]);
                 $('#c1').text(genKnowQuestions[ranQues].c[1]);
@@ -35,7 +37,7 @@ $('#numOfQues').css('display', 'none');
                 $('#c3').text(genKnowQuestions[ranQues].c[3]);
 
                 // sets var to test actual asnswer and user answer
-                actualAnswer = genKnowQuestions[ranQues].a
+                actualAnswer = genKnowQuestions[ranQues].a;
 
                 // saves question in text form to search db to recall on "reviewTest" function
                 var questionsInText = genKnowQuestions[ranQues].q;
@@ -56,23 +58,40 @@ getRandom = function() {
 
 };
 
-
 // button#displayReviewQuestion
 displayReviewQues = function(){
     $('.showSavedQues').css('display', 'block');
     $('#testQuestions').css('display', 'none');
 
     // displays the question number and the user's choice
-    for (var i = 0; i < quesText.length; i++) {
-        $("table").append('<tr id="' + [i] + '" onclick="revTest()"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
+    debugger;
+    for (var i = 0; i < save.length; i++) {
+            if(save[i] != 'BLANK'){
+                console.log('not Blank')
+        $("table").append('<tr id="' + [i] + '" onclick="revTest()" style="color:black"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
+
+
+            }else{
+                console.log('Blank')
+
+        $("table").append('<tr id="' + [i] + '" onclick="revTest()" style="color:red"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
+            }
+
     }
     console.log('save', save)
 };
 
 // onclick event on li displays full answer and questions
 revTest = function(){
-    var quesNumRev = event.target.id;
+    // click col 1
+    var col1 = event;
+    // if(col1 === "BLANK"){
+    //     console.log("here");
+    // }
 
+    // click col 2
+
+    // click col 3
 
 
 };
@@ -90,6 +109,7 @@ exitTest = function(){
 
 checkAnswers = function(){
     var selectedAnswer = event.target.textContent.slice(0,1);
+
     // save the user's answer
     save.push(selectedAnswer);
     // compares user's answer and actual answer
@@ -107,9 +127,11 @@ submitTest = function(){
     $('p').append('YOU HAVE ' + correct + ' CORRECT');
 
 };
-
+// skips to next question
 skip = function(){
-    console.log(event)
+    save.push('BLANK')
+    next();
+
 
     // count = count + 1;
 };
@@ -121,7 +143,7 @@ next = function(){
 
 };
 
-returnHome = function(){
-    count = 0;
-    save = [];
-};
+// returnHome = function(){
+//     count = 0;
+//     save = [];
+// };

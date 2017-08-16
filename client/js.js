@@ -64,16 +64,12 @@ displayReviewQues = function(){
     $('#testQuestions').css('display', 'none');
 
     // displays the question number and the user's choice
-    debugger;
     for (var i = 0; i < save.length; i++) {
             if(save[i] != 'BLANK'){
-                console.log('not Blank')
         $("table").append('<tr id="' + [i] + '" onclick="revTest()" style="color:black"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
 
 
             }else{
-                console.log('Blank')
-
         $("table").append('<tr id="' + [i] + '" onclick="revTest()" style="color:red"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
             }
 
@@ -83,15 +79,22 @@ displayReviewQues = function(){
 
 // onclick event on li displays full answer and questions
 revTest = function(){
-    // click col 1
-    var col1 = event;
-    // if(col1 === "BLANK"){
-    //     console.log("here");
-    // }
+    var colIndex = event.target.cellIndex;
+    switch(colIndex){
+        case 0:
+            // var col1 = event.target.nextSibling.textContent;
+            console.log('case1', event.target.nextSibling.textContent);
+            break;
+        case 1:
+            // var col2 = event.target.textContent;
+            console.log('case2', event.target.textContent);
+        case 2:
+            // var col3 = event.target.previousSibling.textContent;
+            console.log('case3', event.target.previousSibling.textContent)
 
-    // click col 2
 
-    // click col 3
+    }
+
 
 
 };

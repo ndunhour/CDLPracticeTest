@@ -74,7 +74,6 @@ displayReviewQues = function(){
             }
 
     }
-    console.log('save', save)
 };
 
 // onclick event on li displays full answer and questions
@@ -82,20 +81,30 @@ revTest = function(){
     var colIndex = event.target.cellIndex;
     switch(colIndex){
         case 0:
-            // var col1 = event.target.nextSibling.textContent;
-            console.log('case1', event.target.nextSibling.textContent);
+            var col1 = event.target.nextSibling.textContent;
+            var result = GenKnow.findOne({"q": col1});
+            displaySpecQues(result);
             break;
         case 1:
-            // var col2 = event.target.textContent;
-            console.log('case2', event.target.textContent);
+            var col2 = event.target.textContent;
+            result = GenKnow.findOne({"q": col2});
+            displaySpecQues(result);
+            break;
         case 2:
-            // var col3 = event.target.previousSibling.textContent;
-            console.log('case3', event.target.previousSibling.textContent)
-
-
+            var col3 = event.target.previousSibling.textContent;
+            result = GenKnow.findOne({"q": col3});
+            displaySpecQues(result);
+            break;
     }
+};
 
-
+// display specific review question
+displaySpecQues = function(result){
+    $('#specQuestion').text(result.q);
+    $('#specChoice0').text(result.c[0]);
+    $('#specChoice1').text(result.c[1]);
+    $('#specChoice2').text(result.c[2]);
+    $('#specChoice3').text(result.c[3]);
 
 };
 

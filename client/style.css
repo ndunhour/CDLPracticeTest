@@ -95,6 +95,9 @@ td{
 .showSavedQues{
     display: none;
 }
+.displaySpecQues{
+    display: none;
+}
 #testQuestions{
     display: none;
 }

@@ -106,6 +106,7 @@ revTest = function(){
 
 // display specific review question
 displaySpecQues = function(result, userAnswer){
+    $('.displaySpecQues').css('display', 'block');
     $('#specQuestion').text(result.q);
     $('#specChoice0').text(result.c[0]);
     $('#specChoice1').text(result.c[1]);
@@ -120,6 +121,8 @@ changeAnswer = function(){
     var replaceWith = save.splice(arrayPosition, removeAnswer, replaceAnswerWith);
     $('#userAnswer').text("Your answer: " + save[arrayPosition]);
     displayReviewQues();
+    $('.displaySpecQues').css('display', 'none');
+
 
 };
 
@@ -148,9 +151,9 @@ checkAnswers = function(){
 };
 
 submitTest = function(){
+    $('.displaySpecQues').css('display', 'none');
     $('.showSavedQues').css('display', 'none');
-    $('.testComplete')
-        .css('display', 'block')
+    $('.testComplete').css('display', 'block');
     $('p').append('YOU HAVE ' + correct + ' CORRECT');
 
 };

@@ -16,6 +16,8 @@ var actualAnswer;
 var numOfQues;
 // stores skipped Questions
 var skipped = [];
+// arrayPosition to change user's answer
+var arrayPosition;
 
 displayQuestion = function(){
 $('#startTest').css('display', 'none');
@@ -64,13 +66,13 @@ displayReviewQues = function(){
     $('#testQuestions').css('display', 'none');
 
     // displays the question number and the user's choice
+    $('table').empty();
     for (var i = 0; i < save.length; i++) {
             if(save[i] != 'BLANK'){
         $("table").append('<tr id="' + [i] + '" onclick="revTest()" style="color:black"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
             }else{
         $("table").append('<tr id="' + [i] + '" onclick="revTest()" style="color:red"><td>' + (i+1) + '</td><td>' + quesText[i] + '</td><td>' + save[i] + '</td></tr>');
             }
-
     }
 };
 
@@ -82,18 +84,21 @@ revTest = function(){
             var col1 = event.target.nextSibling.textContent;
             var userAnswer = (event.target.textContent) - 1;
             var result = GenKnow.findOne({"q": col1});
+            arrayPosition = userAnswer;
             displaySpecQues(result, userAnswer);
             break;
         case 1:
             var col2 = event.target.textContent;
             userAnswer = (event.target.previousSibling.textContent) - 1;
             result = GenKnow.findOne({"q": col2});
+            arrayPosition = userAnswer;
             displaySpecQues(result, userAnswer);
             break;
         case 2:
             var col3 = event.target.previousSibling.textContent;
             userAnswer = (event.target.previousSibling.previousSibling.textContent) - 1;
             result = GenKnow.findOne({"q": col3});
+            arrayPosition = userAnswer;
             displaySpecQues(result, userAnswer);
             break;
     }
@@ -110,6 +115,11 @@ displaySpecQues = function(result, userAnswer){
 };
 // allows user to review answer, change answer, or input an answer if blank
 changeAnswer = function(){
+    var removeAnswer = 1;
+    var replaceAnswerWith = event.target.textContent.slice(0,1);
+    var replaceWith = save.splice(arrayPosition, removeAnswer, replaceAnswerWith);
+    $('#userAnswer').text("Your answer: " + save[arrayPosition]);
+    displayReviewQues();
 
 };
 

@@ -1,7 +1,12 @@
 // import { Template } from 'meteor/templating';
 // import { ReactiveVar } from 'meteor/reactive-var';
-import { GenKnow } from '../imports/api/genKnowQues.js';
 import { AirBrakes } from '../imports/api/airBrakesQues.js';
+import { Combination } from '../imports/api/combination.js';
+import { DoubTrip } from '../imports/api/doubTrip.js';
+import { GenKnow } from '../imports/api/genKnowQues.js';
+import { Hazmat } from '../imports/api/hazmat.js';
+import { Passenger } from '../imports/api/passenger.js';
+import { Tanker } from '../imports/api/tanker.js';
 
 
 // progress of question
@@ -27,23 +32,29 @@ var db2use;
 
 getTest = function(){
     test2take = event.target.textContent;
-    if(test2take === 'GENERAL KNOWLEDGE'){
-            // genKnow
-            db2use = GenKnow;
-        }else if(test2take === 'AIR BRAKES'){
+    if(test2take === 'AIR BRAKES'){
             db2use = AirBrakes;
+        }else if(test2take === 'COMBINATION'){
+            db2use = Combination;
+        }else if(test2take === 'DOUBLE/TRIPLE'){
+            db2use = DoubTrip;
+        }else if(test2take === 'GENERAL KNOWLEDGE'){
+            db2use = GenKnow;
+        }else if(test2take === 'HAZARDOUS MATERIAL'){
+            db2use = Hazmat;
+        }else if(test2take === 'PASSENGER'){
+            db2use = Passenger;
+        }else if(test2take === 'TANKER'){
+            db2use = Tanker;
         }
 };
 
 displayQuestion = function(){
-    console.log('in displayQuestion', test2take)
 $('#startTest').css('display', 'none');
 $('#testQuestions').css('display', 'block');
 numOfQues = ($('#numOfQues').val());
 $('#numOfQues').css('display', 'none');
-    console.log('display question', db2use)
     test2take = db2use.find().fetch();
-    console.log('display question after set var', test2take)
 
     var ranQues = getRandom();
             // set the number of questions
@@ -177,21 +188,16 @@ submitTest = function(){
 };
 // skips to next question
 skip = function(){
-    save.push('BLANK')
+    save.push('BLANK');
     next();
 
 
     // count = count + 1;
 };
-// ---------------------------- //
+
 next = function(){
     // skips to next question
     count = count + 1;
     displayQuestion();
 
 };
-
-// returnHome = function(){
-//     count = 0;
-//     save = [];
-// };

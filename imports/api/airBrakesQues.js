@@ -26,7 +26,7 @@ if (Meteor.isServer) {
     //         Bars.insert(insertBars[i]);
     //     }
     // }
-    Meteor.publish('airBrakes', function() {
+    Meteor.publish('AirBrakes', function() {
         return AirBrakes.find({});
     });
 }

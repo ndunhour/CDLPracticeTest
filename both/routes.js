@@ -4,21 +4,24 @@ Router.route('/', {
 
 
 });
-Router.route('/genKnow', {
+Router.route('genKnow', {
     name: 'genKnow',
+    template: 'genKnow',
+    path: '/genKnow',
     waitOn: function(){
         return [
             Meteor.subscribe('GenKnow'),
-        ];
+            Meteor.subscribe('AirBrakes')
+            ];
     }
 
 });
-Router.route('/airBrakes', {
+Router.route('airBrakes', {
     name: 'airBrakes',
+    template: 'genKnow',
+    path: '/airBrakes',
     waitOn: function(){
-        return [
-            Meteor.subscribe('airBrakes'),
-        ];
+        return Meteor.subscribe('AirBrakes');
     }
 });
 Router.route('/reviewTest', {

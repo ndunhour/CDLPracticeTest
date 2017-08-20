@@ -12,7 +12,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    'getQuestions':function(){
-         return GenKnow.find({}).fetch();
-    }
+    // 'getQuestions':function(){
+    //      return GenKnow.find({}).fetch();
+    // }
 });

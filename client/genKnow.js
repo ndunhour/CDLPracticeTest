@@ -4,13 +4,14 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './genKnow.html';
 
 import { GenKnow } from '../imports/api/genKnowQues.js';
+import { AirBrakes } from '../imports/api/airBrakesQues.js';
 
 
 Template.blank.created = function(){
+    Meteor.subscribe('AirBrakes');
 };
 
 Template.blank.rendered = function(){
-    displayQuestion();
 
 };
 

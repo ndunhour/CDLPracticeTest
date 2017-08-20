@@ -1,6 +1,8 @@
 // import { Template } from 'meteor/templating';
 // import { ReactiveVar } from 'meteor/reactive-var';
 import { GenKnow } from '../imports/api/genKnowQues.js';
+import { AirBrakes } from '../imports/api/airBrakesQues.js';
+
 
 // progress of question
 var count = 0;
@@ -18,31 +20,48 @@ var numOfQues;
 var skipped = [];
 // arrayPosition to change user's answer
 var arrayPosition;
+// store test choice
+var test2take;
+// store DB to use
+var db2use;
+
+getTest = function(){
+    test2take = event.target.textContent;
+    if(test2take === 'GENERAL KNOWLEDGE'){
+            // genKnow
+            db2use = GenKnow;
+        }else if(test2take === 'AIR BRAKES'){
+            db2use = AirBrakes;
+        }
+};
 
 displayQuestion = function(){
+    console.log('in displayQuestion', test2take)
 $('#startTest').css('display', 'none');
 $('#testQuestions').css('display', 'block');
 numOfQues = ($('#numOfQues').val());
 $('#numOfQues').css('display', 'none');
+    console.log('display question', db2use)
+    test2take = db2use.find().fetch();
+    console.log('display question after set var', test2take)
 
-    const genKnowQuestions = GenKnow.find().fetch();
     var ranQues = getRandom();
             // set the number of questions
             if(count < numOfQues){
 
                 $('#quesNum').text("QUESTION " + (count+1));
-                $('#questions').text(genKnowQuestions[ranQues].q);
+                $('#questions').text(test2take[ranQues].q);
                 $('#choices').css('display', 'block');
-                $('#c0').text(genKnowQuestions[ranQues].c[0]);
-                $('#c1').text(genKnowQuestions[ranQues].c[1]);
-                $('#c2').text(genKnowQuestions[ranQues].c[2]);
-                $('#c3').text(genKnowQuestions[ranQues].c[3]);
+                $('#c0').text(test2take[ranQues].c[0]);
+                $('#c1').text(test2take[ranQues].c[1]);
+                $('#c2').text(test2take[ranQues].c[2]);
+                $('#c3').text(test2take[ranQues].c[3]);
 
                 // sets var to test actual asnswer and user answer
-                actualAnswer = genKnowQuestions[ranQues].a;
+                actualAnswer = test2take[ranQues].a;
 
                 // saves question in text form to search db to recall on "reviewTest" function
-                var questionsInText = genKnowQuestions[ranQues].q;
+                var questionsInText = test2take[ranQues].q;
                 quesText.push(questionsInText);
 
             $("#progress")
@@ -55,7 +74,7 @@ $('#numOfQues').css('display', 'none');
 
 getRandom = function() {
     // create a random question from the database
-    const ranNum = (Math.floor(Math.random() * GenKnow.find().count()));
+    const ranNum = (Math.floor(Math.random() * db2use.find().count()));
     return ranNum;
 
 };
@@ -83,21 +102,21 @@ revTest = function(){
         case 0:
             var col1 = event.target.nextSibling.textContent;
             var userAnswer = (event.target.textContent) - 1;
-            var result = GenKnow.findOne({"q": col1});
+            var result = db2use.findOne({"q": col1});
             arrayPosition = userAnswer;
             displaySpecQues(result, userAnswer);
             break;
         case 1:
             var col2 = event.target.textContent;
             userAnswer = (event.target.previousSibling.textContent) - 1;
-            result = GenKnow.findOne({"q": col2});
+            result = db2use.findOne({"q": col2});
             arrayPosition = userAnswer;
             displaySpecQues(result, userAnswer);
             break;
         case 2:
             var col3 = event.target.previousSibling.textContent;
             userAnswer = (event.target.previousSibling.previousSibling.textContent) - 1;
-            result = GenKnow.findOne({"q": col3});
+            result = db2use.findOne({"q": col3});
             arrayPosition = userAnswer;
             displaySpecQues(result, userAnswer);
             break;
@@ -122,8 +141,6 @@ changeAnswer = function(){
     $('#userAnswer').text("Your answer: " + save[arrayPosition]);
     displayReviewQues();
     $('.displaySpecQues').css('display', 'none');
-
-
 };
 
 // resets all var and clears out arrays
@@ -135,6 +152,7 @@ exitTest = function(){
     actualAnswer = "";
     numOfQues = "";
     Router.go('/');
+    test2take = "";
 };
 
 checkAnswers = function(){

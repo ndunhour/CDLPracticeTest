@@ -3,8 +3,10 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './airBrakes.html';
 
-Template.airBrakes.onCreated(function airBrakesOnCreated() {
+import { AirBrakes } from '../imports/api/airBrakesQues.js';
 
+Template.airBrakes.onCreated(function airBrakesOnCreated() {
+    console.log('big A', AirBrakes.find())
 });
 
 Template.airBrakes.helpers({

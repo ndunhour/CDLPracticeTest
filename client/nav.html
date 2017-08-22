@@ -1,11 +1,14 @@
 <template name="nav">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container-fluid">
-            <ul class="nav nav-pills nav-justified" id='selectTest'>
-                <li id='genKnow' onclick="getTest()">GENERAL KNOWLEDGE</li>
-                <li id='airBrakes' onclick="getTest()">AIR BRAKES</li>
-                <li id='home' onclick="exitTest()"><a href="/">EXIT</a></li>
-            </ul>
-        </div>
-    </nav>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <ul class="nav nav-pills nav-justified" id='quit'>
+                            <a href="/"><li id='home' onclick="exitTest()">QUIT</li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
 </template>

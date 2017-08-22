@@ -29,31 +29,40 @@ var arrayPosition;
 var test2take;
 // store DB to use
 var db2use;
+// total questions for each test
+var totQues;
 
 getTest = function(){
     test2take = event.target.textContent;
     if(test2take === 'AIR BRAKES'){
             db2use = AirBrakes;
+            totQues = 33;
         }else if(test2take === 'COMBINATION'){
             db2use = Combination;
+            totQues = 35;
         }else if(test2take === 'DOUBLE/TRIPLE'){
             db2use = DoubTrip;
+            totQues = 35;
         }else if(test2take === 'GENERAL KNOWLEDGE'){
             db2use = GenKnow;
+            totQues = 111;
         }else if(test2take === 'HAZARDOUS MATERIAL'){
             db2use = Hazmat;
+            totQues = 49;
         }else if(test2take === 'PASSENGER'){
             db2use = Passenger;
+            totQues = 33;
         }else if(test2take === 'TANKER'){
             db2use = Tanker;
+            totQues = 26;
         }
 };
 
 displayQuestion = function(){
-$('#startTest').css('display', 'none');
+$('.chooseNumOfQues').css('display', 'none');
 $('#testQuestions').css('display', 'block');
 numOfQues = ($('#numOfQues').val());
-$('#numOfQues').css('display', 'none');
+// $('#numOfQues').css('display', 'none');
     test2take = db2use.find().fetch();
 
     var ranQues = getRandom();
@@ -190,8 +199,6 @@ submitTest = function(){
 skip = function(){
     save.push('BLANK');
     next();
-
-
     // count = count + 1;
 };
 

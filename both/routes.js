@@ -1,6 +1,8 @@
 
-Router.route('/', {
+Router.route('home', {
     name: 'home',
+    template: 'home',
+    path: '/'
 
 
 });
@@ -21,6 +23,21 @@ Router.route('genKnow', {
     }
 
 });
-Router.route('/reviewTest', {
-    name: 'reviewTest'
+Router.route('nav', {
+    name: 'nav',
+    template: 'nav',
+    path: '/nav',
+    waitOn: function(){
+        return [
+            Meteor.subscribe('AirBrakes'),
+            Meteor.subscribe('Combination'),
+            Meteor.subscribe('DoubTrip'),
+            Meteor.subscribe('GenKnow'),
+            Meteor.subscribe('Hazmat'),
+            Meteor.subscribe('Passenger'),
+            Meteor.subscribe('Tanker')
+        ];
+    }
+
 });
+

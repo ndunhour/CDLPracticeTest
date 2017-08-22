@@ -2,13 +2,14 @@
     {{> nav}}
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row chooseNumOfQues">
             <div class="col-md-8">
-                <input type="text"  id="numOfQues" placeholder="Enter number of questions for test">
+                <p id="com"></p>
+                <input type="number" id="numOfQues" placeholder="Enter number of questions for test">
             </div>
-        </div>
-        <div id="startTest">
-            <p onclick="displayQuestion()">START</p>
+            <div class="col-md-4" id="startTest">
+                <p onclick="displayQuestion()">START</p>
+            </div>
         </div>
     </div>
 
@@ -26,7 +27,6 @@
                     <li id="c1" onclick="checkAnswers()"></li>
                     <li id="c2" onclick="checkAnswers()"></li>
                     <li id="c3" onclick="checkAnswers()"></li>
-
                 </ul>
             </div>
 

@@ -1,16 +1,38 @@
-body{
     font-family: Tahoma, Geneva, sans-serif;
+body{
     background-color: #004db8;
     font-size: medium;
 }
 table{
     border-collapse: collapse;
+    width: 100%;
 }
 table, th, tr, td{
     border: 1px solid black;
 }
 td{
     padding: 10px !important;
+}
+/*displaying divs*/
+.chooseNumOfQues{
+    display: block;
+}
+#testQuestions{
+    display: none;
+}
+.displaySpecQues{
+    display: none;
+}
+.showSavedQues{
+    display: none;
+}
+.testComplete{
+    display: none;
+}
+/*end displaying divs*/
+
+.resultsTbl{
+    padding-bottom: 15px;
 }
 .titlePage{
     text-align: center;
@@ -43,7 +65,6 @@ td{
     border-bottom: 1px solid #00226b;
     padding: 10px;
     margin-bottom: 10px;
-
 }
 .quesProgress{
     background-color: #7db3ff;
@@ -51,7 +72,6 @@ td{
     padding: 10px;
     margin-bottom: 10px;
 }
-
 .save{
     background-color: #7db3ff;
     border-bottom: 1px solid #00226b;
@@ -64,7 +84,6 @@ td{
     border-bottom: 1px solid #00226b;
     padding: 10px;
     margin-bottom: 10px;
-    display: none;
 }
 .movementButts p{
     background-color: white;
@@ -82,7 +101,6 @@ td{
 .movementButts p:active{
     transform: translateY(4px);
     box-shadow: 2px 2px #888888;
-
 }
 .testComplete{
     text-align: center;
@@ -98,8 +116,21 @@ td{
 .displaySpecQues{
     display: none;
 }
-#testQuestions{
-    display: none;
+#submitTest {
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #00226b;
+    border-radius: 25px;
+    padding: 5px 0;
+    box-shadow: 5px 5px #888888;
+}
+#submitTest p:hover{
+    background-color: #c7ddf5;
+    cursor: pointer;
+}
+#submitTest p:active{
+    transform: translateY(4px);
+    box-shadow: 2px 2px #888888;
 }
 input#numOfQues{
     width: 100%;
@@ -121,14 +152,12 @@ input#numOfQues{
 #numOfQuesButt p:active{
     transform: translateY(4px);
     box-shadow: 2px 2px #888888;
-
 }
 #savedQuestions{
     background-color: #7db3ff;
     border-bottom: 1px solid #00226b;
     padding: 10px;
     margin-bottom: 10px;
-
 }
 #startTest{
     margin-bottom: 10px;
@@ -173,7 +202,6 @@ input#numOfQues{
 }
 ul#selectTest.list-group li{
     box-shadow: 5px 5px #888888;
-    margin-bottom: 10px;
 }
 ul#selectTest.list-group li:hover{
     background-color: #c7ddf5;
@@ -188,7 +216,8 @@ ul#selectTest.list-group a:hover{
 }
 
 li{
-    padding-bottom: 50px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 li:hover{
     background-color: gray;
@@ -196,4 +225,21 @@ li:hover{
 ul{
     list-style-type: none;
 
+}
+ul#quit.nav.nav-pills.nav-justified li{
+    box-shadow: 5px 5px #888888;
+    text-align: right;
+    padding-right: 15px;
+}
+ul#quit.nav.nav-pills.nav-justified li:hover{
+    background-color: #c7ddf5;
+    cursor: pointer;
+    text-decoration: none;
+}
+ul#quit.nav.nav-pills.nav-justified li:active{
+    transform: translateY(4px);
+    box-shadow: 2px 2px #888888;
+}
+ul#quit.nav.nav-pills.nav-justified a:hover{
+    text-decoration: none;
 }

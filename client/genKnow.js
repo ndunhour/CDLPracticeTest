@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './genKnow.html';
 import './home.html';
+import './js.js';
 
 import { AirBrakes } from '../imports/api/airBrakesQues.js';
 import { Combination } from '../imports/api/combination.js';
@@ -12,12 +13,14 @@ import { Hazmat } from '../imports/api/hazmat.js';
 import { Passenger } from '../imports/api/passenger.js';
 import { Tanker } from '../imports/api/tanker.js';
 
+    // console.log('in rendered', numOfQues)
 
-Template.blank.created = function(){
-
+Template.genKnow.onCreated = function(){
 };
 
-Template.blank.rendered = function(){
+Template.genKnow.rendered = function(){
+
+    $('#userMsg').text('THE MAXIMUM OF QUESTIONS FOR THE ' + Session.get('selectTest') + ' TEST IS ' + Session.get('quesVal'))
 };
 
 Template.genKnow.helpers({

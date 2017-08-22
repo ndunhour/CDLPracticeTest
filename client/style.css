@@ -18,7 +18,7 @@ td{
     display: block;
 }
 #testQuestions{
-    display: none;
+    display: block;
 }
 .displaySpecQues{
     display: none;
@@ -36,10 +36,10 @@ td{
 }
 .titlePage{
     text-align: center;
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     left: 0;
-    height: 100%;
+    /*height: 100%;*/
     width: 100%;
 }
 .tempHeader{

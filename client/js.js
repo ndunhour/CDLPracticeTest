@@ -56,15 +56,13 @@ getTest = function(){
             db2use = Tanker;
             totQues = 26;
         }
+            console.log('db2use', db2use)
 };
 
 displayQuestion = function(){
-$('.chooseNumOfQues').css('display', 'none');
-$('#testQuestions').css('display', 'block');
-numOfQues = ($('#numOfQues').val());
-// $('#numOfQues').css('display', 'none');
+    numOfQues = ($('#numOfQues').val());
+    console.log('numOfQues', db2use)
     test2take = db2use.find().fetch();
-
     var ranQues = getRandom();
             // set the number of questions
             if(count < numOfQues){

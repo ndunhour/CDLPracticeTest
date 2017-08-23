@@ -56,12 +56,13 @@ getTest = function(){
             db2use = Tanker;
             totQues = 26;
         }
-            console.log('db2use', db2use)
 };
 
 displayQuestion = function(){
     numOfQues = ($('#numOfQues').val());
-    console.log('numOfQues', db2use)
+    $('.chooseNumOfQues').css('display', 'none');
+    $('#testQuestions').css('display', 'block');
+
     test2take = db2use.find().fetch();
     var ranQues = getRandom();
             // set the number of questions
@@ -144,6 +145,7 @@ revTest = function(){
 // display specific review question
 displaySpecQues = function(result, userAnswer){
     $('.displaySpecQues').css('display', 'block');
+    $('.showSavedQues').css('display', 'none')
     $('#specQuestion').text(result.q);
     $('#specChoice0').text(result.c[0]);
     $('#specChoice1').text(result.c[1]);
@@ -159,6 +161,8 @@ changeAnswer = function(){
     $('#userAnswer').text("Your answer: " + save[arrayPosition]);
     displayReviewQues();
     $('.displaySpecQues').css('display', 'none');
+    $('.showSavedQues').css('display', 'block');
+
 };
 
 // resets all var and clears out arrays
@@ -190,7 +194,7 @@ submitTest = function(){
     $('.displaySpecQues').css('display', 'none');
     $('.showSavedQues').css('display', 'none');
     $('.testComplete').css('display', 'block');
-    $('p').append('YOU HAVE ' + correct + ' CORRECT');
+    $('#testResults').append('YOU HAVE ' + correct + ' CORRECT');
 
 };
 // skips to next question

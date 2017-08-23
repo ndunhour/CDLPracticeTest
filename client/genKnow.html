@@ -7,7 +7,7 @@
                 <p id="userMsg"></p>
                 <input type="number" id="numOfQues" placeholder="Enter number of questions for test">
             </div>
-            <div class="col-md-4" id="startTest">
+            <div class="col-md-4 myButt" id="startTest">
                 <p onclick="displayQuestion()">START</p>
             </div>
         </div>
@@ -57,18 +57,20 @@
         </div>
 
 
+
         <div class="container-fluid">
             <div class="showSavedQues">
                 <div><table></table></div>
-                <div><button id="submitTest" onclick="submitTest()">Submit Test</button></div>
+                <div class="myButt"><p id="submitTest" onclick="submitTest()">SUBMIT TEST</p></div>
             </div>
         </div>
 
         <div class="testComplete">
             <h3>TEST COMPLETE</h3>
-            <p></p>
-            <button id="submitTest" onclick="exitTest()">Exit</button>
-        </div>
+            <p id="testResults"></p>
+            <div class="myButt">
+                <p onclick="exitTest()">EXIT</p></div>
+            </div>
 
     </div>
 </template>

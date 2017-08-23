@@ -27,5 +27,13 @@ Template.genKnow.helpers({
 });
 
 Template.genKnow.events({
+    // 'click .showSavedQues tr'(){
+    //     $('.showSavedQues').css('display', 'none');
+    //     $('.displaySpecQues').css('display', 'block');
+    // },
+    // 'click .displaySpecQues li'(){
+    //     $('.showSavedQues').css('display', 'block');
+    //     $('.displaySpecQues').css('display', 'none')
+    // }
 
 });

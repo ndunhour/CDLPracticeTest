@@ -10,15 +10,19 @@ table{
 table, th, tr, td{
     border: 1px solid black;
 }
+tr:hover{
+    background-color: #c7ddf5;
+}
 td{
     padding: 10px !important;
 }
+
 /*displaying divs*/
 .chooseNumOfQues{
     display: block;
 }
 #testQuestions{
-    display: block;
+    display: none;
 }
 .displaySpecQues{
     display: none;
@@ -42,6 +46,28 @@ td{
     /*height: 100%;*/
     width: 100%;
 }
+
+/*my default butt*/
+.myButt p{
+    background-color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #00226b;
+    border-radius: 25px;
+    padding: 5px 0;
+    box-shadow: 5px 5px #888888;
+}
+.myButt p:hover{
+    background-color: #c7ddf5;
+    cursor: pointer;
+}
+.myButt p:active{
+    transform: translateY(4px);
+    box-shadow: 2px 2px #888888;
+}
+/*end my default butt*/
+
+
 .tempHeader{
     background-color: #7db3ff;
     padding: 10px;
@@ -58,7 +84,6 @@ td{
     border-bottom: 1px solid #00226b;
     padding: 10px;
     margin-bottom: 10px;
-
 }
 .answer{
     background-color: #7db3ff;
@@ -113,24 +138,11 @@ td{
 .showSavedQues{
     display: none;
 }
+.showSavedQues div{
+    padding-bottom: 15px;
+}
 .displaySpecQues{
     display: none;
-}
-#submitTest {
-    text-align: center;
-    font-weight: bold;
-    border: 1px solid #00226b;
-    border-radius: 25px;
-    padding: 5px 0;
-    box-shadow: 5px 5px #888888;
-}
-#submitTest p:hover{
-    background-color: #c7ddf5;
-    cursor: pointer;
-}
-#submitTest p:active{
-    transform: translateY(4px);
-    box-shadow: 2px 2px #888888;
 }
 input#numOfQues{
     width: 100%;
@@ -159,7 +171,7 @@ input#numOfQues{
     padding: 10px;
     margin-bottom: 10px;
 }
-#startTest{
+/*#startTest{
     margin-bottom: 10px;
 }
 #startTest p{
@@ -178,7 +190,8 @@ input#numOfQues{
     transform: translateY(4px);
     box-shadow: 2px 2px #888888;
 
-}
+}*/
+
 #finishTest{
     display: none;
     margin: 10px;
@@ -199,6 +212,13 @@ input#numOfQues{
     transform: translateY(4px);
     box-shadow: 2px 2px #888888;
 
+}
+#userAnswer{
+    text-align: center;
+    font-weight: bold;
+}
+#userMsg{
+    text-align: center;
 }
 ul#selectTest.list-group li{
     box-shadow: 5px 5px #888888;

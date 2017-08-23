@@ -19,21 +19,12 @@ Template.genKnow.onCreated = function(){
 };
 
 Template.genKnow.rendered = function(){
-
-    $('#userMsg').text('THE MAXIMUM OF QUESTIONS FOR THE ' + Session.get('selectTest') + ' TEST IS ' + Session.get('quesVal'))
+    $('#userMsg').append('THE MAXIMUM OF QUESTIONS FOR THE <strong>' + Session.get('selectTest') + '</strong> TEST IS <strong>' + Session.get('quesVal') + '</strong>')
 };
 
 Template.genKnow.helpers({
 });
 
 Template.genKnow.events({
-    // 'click .showSavedQues tr'(){
-    //     $('.showSavedQues').css('display', 'none');
-    //     $('.displaySpecQues').css('display', 'block');
-    // },
-    // 'click .displaySpecQues li'(){
-    //     $('.showSavedQues').css('display', 'block');
-    //     $('.displaySpecQues').css('display', 'none')
-    // }
 
 });

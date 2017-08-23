@@ -56,39 +56,56 @@ getTest = function(){
             db2use = Tanker;
             totQues = 26;
         }
+        console.log('in get test', totQues);
 };
 
 displayQuestion = function(){
     numOfQues = ($('#numOfQues').val());
-    $('.chooseNumOfQues').css('display', 'none');
-    $('#testQuestions').css('display', 'block');
-
-    test2take = db2use.find().fetch();
-    var ranQues = getRandom();
-            // set the number of questions
-            if(count < numOfQues){
-
-                $('#quesNum').text("QUESTION " + (count+1));
-                $('#questions').text(test2take[ranQues].q);
-                $('#choices').css('display', 'block');
-                $('#c0').text(test2take[ranQues].c[0]);
-                $('#c1').text(test2take[ranQues].c[1]);
-                $('#c2').text(test2take[ranQues].c[2]);
-                $('#c3').text(test2take[ranQues].c[3]);
-
-                // sets var to test actual asnswer and user answer
-                actualAnswer = test2take[ranQues].a;
-
-                // saves question in text form to search db to recall on "reviewTest" function
-                var questionsInText = test2take[ranQues].q;
-                quesText.push(questionsInText);
-
-            $("#progress")
-                .text((count+1) + " of " + numOfQues);
-
-        }else{
-            displayReviewQues();
+    // input validation for numbOfQues
+    if(isNaN(numOfQues) || numOfQues < 1 || numOfQues > totQues){
+        console.log('error');
+        if(isNaN(numOfQues)){
+            $('.error').append('THIS NEEDS TO BE A NUMBER');
         }
+        if(numOfQues < 1 || numOfQues > totQues){
+            $('.error').append('ENTER A NUMBER BETWEEN 1 AND ' + totQues);
+        }
+        $('#numOfQues').val('');
+
+
+    } else {
+        console.log('no error')
+        $('.chooseNumOfQues').css('display', 'none');
+        $('#testQuestions').css('display', 'block');
+
+        test2take = db2use.find().fetch();
+        var ranQues = getRandom();
+                // set the number of questions
+                if(count < numOfQues){
+
+                    $('#quesNum').text("QUESTION " + (count+1));
+                    $('#questions').text(test2take[ranQues].q);
+                    $('#choices').css('display', 'block');
+                    $('#c0').text(test2take[ranQues].c[0]);
+                    $('#c1').text(test2take[ranQues].c[1]);
+                    $('#c2').text(test2take[ranQues].c[2]);
+                    $('#c3').text(test2take[ranQues].c[3]);
+
+                    // sets var to test actual asnswer and user answer
+                    actualAnswer = test2take[ranQues].a;
+
+                    // saves question in text form to search db to recall on "reviewTest" function
+                    var questionsInText = test2take[ranQues].q;
+                    quesText.push(questionsInText);
+
+                $("#progress")
+                    .text((count+1) + " of " + numOfQues);
+
+            }else{
+                displayReviewQues();
+            }
+    }
+
 };
 
 getRandom = function() {
@@ -145,7 +162,7 @@ revTest = function(){
 // display specific review question
 displaySpecQues = function(result, userAnswer){
     $('.displaySpecQues').css('display', 'block');
-    $('.showSavedQues').css('display', 'none')
+    $('.showSavedQues').css('display', 'none');
     $('#specQuestion').text(result.q);
     $('#specChoice0').text(result.c[0]);
     $('#specChoice1').text(result.c[1]);

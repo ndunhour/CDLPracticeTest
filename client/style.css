@@ -67,7 +67,11 @@ td{
 }
 /*end my default butt*/
 
-
+.error{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
 .tempHeader{
     background-color: #7db3ff;
     padding: 10px;
@@ -110,7 +114,7 @@ td{
     padding: 10px;
     margin-bottom: 10px;
 }
-.movementButts p{
+/*.movementButts p{
     background-color: white;
     font-weight: bold;
     text-align: center;
@@ -126,7 +130,7 @@ td{
 .movementButts p:active{
     transform: translateY(4px);
     box-shadow: 2px 2px #888888;
-}
+}*/
 .testComplete{
     text-align: center;
     background-color: #7db3ff;

@@ -63,7 +63,6 @@ displayQuestion = function(){
     numOfQues = ($('#numOfQues').val());
     // input validation for numbOfQues
     if(isNaN(numOfQues) || numOfQues < 1 || numOfQues > totQues){
-        console.log('error');
         if(isNaN(numOfQues)){
             $('.error').append('THIS NEEDS TO BE A NUMBER');
         }
@@ -74,10 +73,8 @@ displayQuestion = function(){
 
 
     } else {
-        console.log('no error')
         $('.chooseNumOfQues').css('display', 'none');
         $('#testQuestions').css('display', 'block');
-
         test2take = db2use.find().fetch();
         var ranQues = getRandom();
                 // set the number of questions
@@ -211,7 +208,11 @@ submitTest = function(){
     $('.displaySpecQues').css('display', 'none');
     $('.showSavedQues').css('display', 'none');
     $('.testComplete').css('display', 'block');
-    $('#testResults').append('YOU HAVE ' + correct + ' CORRECT');
+    console.log('regular math', Math.floor(numOfQues/correct));
+    var percentage = Math.floor((correct/numOfQues)*100);
+    console.log('percentage', percentage)
+    $('#testResults').append('YOU HAVE ' + correct + ' CORRECT <br> ' + percentage + ' %');
+
 
 };
 // skips to next question
